@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es-VE">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <meta name="author" content="Mariadelia Finizola, Kelly Apolinar" />
+        <meta name="description" content="Es un juego de batalla naval" />
+        <meta name="keywords" content="Batalla naval, juego, taller" />
+        <meta name="robots" content="noindex, nofollow" /> 
+        <title>Batalla Naval </title>
+        <link rel="icon" href="client/images/ícono.png" type="image/png" size="16x16 32x32 64x64"/> 
+        <link rel="stylesheet" href="client/styles/pagina-principal.css" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Gemstones&family=Rubik+Puddles&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body>    
+        <div class="main-container wrapper">
+            <audio autoplay loop hidden>
+                <source src="client/audio/battle-march-action-loop-6935.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+            </audio>                            
+            <header>
+                <h1 id="titulo">BATALLA NAVAL</h1>              
+            </header>    
+            <main>   
+                <nav> 
+                    <div>
+                        <button id="create-game" class="server-operation">Crear un nuevo juego</button>
+                        <button id="join-game" class="server-operation">Unirse a un juego existente</button>
+                        <button id="start-game" class="server-operation" onclick="guardarNombre()">¡Iniciar la partida!</button>
+                        <input type="text" id="game-id" class="server-operation" placeholder="ID del juego" />
+                        <div id="campos-nombres"></div>
+                        <!-- <button id="send-move" class="server-operation">Enviar el movimiento</button>
+                        <button id="leave-game" class="server-operation">¡Abandonar la partida!</button>
+                        <button id="close-connection" class="client-operation">Cerrar la conexión con el servidor</button> -->
+                    </div>
+                    <div id="messages"></div>
+                    <script src="client/scripts/ws-client.js" type="text/javascript"></script> 
+                    <script src="client/scripts/jugar.js" type="text/javascript"></script>                 
+                    <br><br><br>
+                    <img src="client/images/1portaavionesN.png" class="ship-right-to-left ship1">
+                    <img src="client/images/2acorazado.png" class="ship-left-to-right ship2"> 
+                    <img src="client/images/3crucero.png" class="ship-right-to-left ship3">
+                    <img src="client/images/4submarino.png" class="ship-left-to-right ship4">
+                    <img src="client/images/5destructorN.png" class="ship-right-to-left ship5">   
+                </nav>
+            </main>
+            <aside>      
+                <div class="inicio-objetivo">
+                    <div class="cuadro">
+                        <h2>Inicio</h2>
+                        <p>Batalla Naval es un clásico juego de mesa de estrategia que ha entretenido a generaciones de jugadores desde su creación. El juego fue inventado a principios del siglo XX, aunque su popularidad se disparó después de que Milton Bradley (ahora propiedad de Hasbro) lo publicara en 1967. El juego original de Batalla Naval se jugaba en hojas de papel cuadriculado, pero con el tiempo, ha evolucionado y se ha adaptado a múltiples formatos, incluyendo versiones electrónicas y videojuegos.</p>
+                    </div>
+                    <div class="cuadro">
+                        <h2>Objetivo</h2>
+                        <p>El objetivo de Batalla Naval es simple: hundir la flota del oponente antes de que él hunda la tuya. Cada jugador oculta sus barcos en una cuadrícula y se turnan para disparar a las coordenadas del oponente, esperando acertar en sus barcos y finalmente hundirlos.</p>
+                    </div>
+                </div>
+                <div class="instrucciones-subtitulo">
+                    <h2>Instrucciones</h2>
+                </div>
+                <div class="inicio-objetivo">
+                    <div class="cuadro-componentes">
+                        <h3>Componentes del Juego</h3> 
+                        <div class="componentes-juego">   
+                            <div class="componente-izquierda">
+                                <ul>
+                                    <li>Tablero de juego para cada jugador (10x10 cuadrículas). Se muestra el tablero del propio jugador, donde se muestran la colocación dada a los barcos por parte de dicho jugador, y otra cuadrícula que representa el espacio donde el contrincante distribuyó sus barcos, y en donde se mostrarán los tiros fallidos o acertados a medida que avanza el juego.</li>
+                                </ul>
+                            </div>
+                            <div class="componente-derecha">
+                                <ul>
+                                    <li class="barcos-texto">Flota de barcos:<br><br></li>
+                                    <ul>
+                                        <li class="barcos-texto">1 portaaviones (abarca 5 casillas, ya sea en sentido horizontal o vertical)<img src="client/images/1portaavionesN.png" class="barcos-instrucciones"></li>
+                                        <li class="barcos-texto">1 acorazado (abarca 4 casillas, ya sea en sentido horizontal o vertical)<img src="client/images/2acorazado.png" class="barcos-instrucciones"></li>
+                                        <li class="barcos-texto">1 crucero (abarca 3 casillas, ya sea en sentido horizontal o vertical)<img src="client/images/3crucero.png" class="barcos-instrucciones"></li>
+                                        <li class="barcos-texto">1 submarino (abarca 3 casillas, ya sea en sentido horizontal o vertical)<img src="client/images/4submarino.png" class="barcos-instrucciones"></li>
+                                        <li class="barcos-texto">1 destructor (abarca 2 casillas, ya sea en sentido horizontal o vertical)<img src="client/images/5destructorN.png" class="barcos-instrucciones"></li>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                <div class="inicio-objetivo">
+                    <div class="cuadro-instrucciones">
+                        <h3>Preparación</h3>
+                        <ul>
+                            <li>Cada jugador coloca sus barcos en el tablero de manera oculta al oponente.</li>
+                            <li>Los barcos pueden colocarse vertical u horizontalmente.</li>
+                            <li>Los barcos no pueden superponerse.</li>
+                        </ul>
+                    </div>
+                    <div class="cuadro-instrucciones">
+                        <h3>Turnos</h3>
+                        <ul>
+                            <li>Los jugadores se turnan para "disparar" a las casillas del oponente, intentando adivinar la posición de los barcos enemigos.</li>
+                            <li>Cada disparo se indica seleccionando una casilla en el tablero del oponente.</li>
+                            <li>El jugador a quien le corresponderá "disparar" por primera vez (primer turno) será seleccionado al azar.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="inicio-objetivo">
+                    <div class="cuadro-instrucciones">
+                        <h3>Impactos</h3>
+                        <ul>
+                            <li>Si un jugador acierta un disparo en una casilla que contiene parte de un barco enemigo, se marca un "impacto" (hit).<img src="client/images/fuegoSolo.png" class="hit-instrucciones"></li>
+                            <li>Si el disparo no acierta en ningún barco, se marca un "fallo" (miss).<img src="client/images/círculo.png" class="miss-instrucciones"></li>
+                        </ul>
+                    </div>
+                    <div class="cuadro-instrucciones">
+                        <h3>Hundimiento</h3>
+                        <ul>
+                            <li>Cuando todas las casillas de un barco han sido impactadas, el barco se considera "hundido".</li>
+                            <li>Se debe informar al oponente qué barco ha sido hundido.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="inicio-objetivo">
+                    <div class="cuadro-instrucciones">
+                        <h3>Victoria</h3>
+                        <ul>
+                            <li>El primer jugador en hundir toda la flota enemiga gana la partida.</li>
+                        </ul>
+                    </div>
+                    <div class="cuadro-instrucciones">
+                        <h3>Duración del Turno</h3>
+                        <ul>
+                            <li>Se debe establecer un límite de tiempo para cada turno de 60 segundos (1 minuto) para mantener el ritmo del juego.</li>
+                            <li>Si un jugador no realiza su movimiento dentro del límite de tiempo, se considera un turno perdido.</li>
+                        </ul>
+                    </div>
+                </div>                                                                                                 
+            </aside> 
+            <footer>         
+                <button><a href="#titulo">Ir al comienzo</a></button>
+                <p class="hecho-por">Hecho por Mariadelia Finizola y Kelly Apolinar</p>
+            </footer>   
+        </div>
+    </body>
+</html>

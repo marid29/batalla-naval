@@ -1,0 +1,190 @@
+:root {
+    --board-columns: 10;
+    --board-rows: 10;
+    --board-width: 440px;
+    --board-height: 440px;
+    --position-width: 40px;
+    --position-height: 40px;
+}
+
+body { 
+    font-family: Garamond, serif;
+    color: black;
+    text-align: center;
+    background: radial-gradient(circle, #99daff, #0a82c8);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    font-family: "Rubik Puddles", system-ui;
+    padding: 2px;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(to bottom right , rgb(8, 81, 8), rgb(25, 138, 25));
+    color: white;
+}
+
+button {
+    background: linear-gradient(to bottom right ,rgb(25, 138, 25), rgb(8, 81, 8));
+    box-shadow: 0 26px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    padding: 15px 32px;
+    margin: 10px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    color:white;
+}
+
+button:hover {
+    border: 2px solid white;
+    background: linear-gradient(to bottom right ,rgb(25, 138, 25), rgb(8, 81, 8));
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    width: 100%;
+}
+
+.tablero-jugador, .tablero-computadora {
+    flex: 1;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 20px;
+    margin-left: 100px;
+}
+
+.tablero-jugador h3, .tablero-computadora h3 {
+    text-align: center;
+    margin-right: 100px;
+}
+
+.jugador, .computadora {
+    display: grid;
+    grid-template-columns: repeat(calc(var(--board-columns) + 1), var(--position-width));
+    grid-template-rows: repeat(calc(var(--board-rows) + 1), var(--position-height));
+    width: var(--board-width);
+    height: var(--board-height);
+    background: lightblue url('../images/mar.jpg') repeat-x;
+    background-size: cover;
+    animation: wave 100s linear infinite;
+    border: 1px solid #36b5fe; 
+    box-shadow: 0 26px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+
+.jugador .position.header, .computadora .position.header {
+    color: #000;
+    background: #c3a14c;
+}
+
+.jugador .position, .computadora .position {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--position-width);
+    height: var(--position-height);
+    border: 1px solid #36b5fe;
+    color: white;
+    z-index: 1;
+}
+
+.position {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.barcos-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: auto;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.barco {
+    width: auto;
+    cursor: grab;
+    transform-origin: center center;
+    z-index: 10;
+    height: auto;
+}
+
+.jugador div.hit, .computadora div.hit {
+    width: var(--position-width);
+    height: var(--position-height);
+    color: red;
+    background: url('../images/fuego.png') 0 0 no-repeat;
+    background-size: 200px;
+    animation: sprite-animation 1.7s steps(1) infinite;
+    z-index: 30;
+}
+
+.jugador div.miss, .computadora div.miss {
+    width: var(--position-width);
+    height: var(--position-height);
+    color: blue;
+    background: url('../images/círculo.png') center center no-repeat;
+    background-size: 20px;
+    text-indent: 400%;
+    white-space: nowrap;
+    overflow: hidden;
+    z-index: 30;
+}
+
+@keyframes wave {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 0; }
+}  
+
+@keyframes sprite-animation {
+    0% { background-position: 0 0; }
+    3.33% { background-position: -40px 0; }
+    6.67% { background-position: -80px 0; }
+    10% { background-position: -120px 0; }
+    13.33% { background-position: -160px 0; }
+    16.67% { background-position: 0 -40px; }
+    20% { background-position: -40px -40px; }
+    23.33% { background-position: -80px -40px; }
+    26.67% { background-position: -120px -40px; }
+    30% { background-position: -160px -40px; }
+    33.33% { background-position: 0 -80px; }
+    36.67% { background-position: -40px -80px; }
+    40% { background-position: -80px -80px; }
+    43.33% { background-position: -120px -80px; }
+    46.67% { background-position: -160px -80px; }
+    50% { background-position: 0 -120px; }
+    53.33% { background-position: -40px -120px; }
+    56.67% { background-position: -80px -120px; }
+    60% { background-position: -120px -120px; }
+    63.33% { background-position: -160px -120px; }
+    66.67% { background-position: 0 -160px; }
+    70% { background-position: -40px -160px; }
+    73.33% { background-position: -80px -160px; }
+    76.67% { background-position: -120px -160px; }
+    80% { background-position: -160px -160px; }
+    83.33% { background-position: 0 -200px; }
+    86.67% { background-position: -40px -200px; }
+    90% { background-position: -80px -200px; }
+    93.33% { background-position: -120px -200px; }
+    96.67% { background-position: -160px -200px; }
+    100% { background-position: 0 0; }
+}

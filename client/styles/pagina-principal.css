@@ -1,0 +1,230 @@
+body { 
+    font-family: Garamond, serif;
+    color: black;
+    background: radial-gradient(circle, #97d9ff, #0a82c8);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+header {
+    font-family: "Rubik Puddles", system-ui;
+    padding: 2px;
+    font-size: 30px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(to bottom right , rgb(8, 81, 8 ), rgb(25, 138, 25));
+    color: white;
+}
+
+main, aside, footer, label {
+    margin: 10px;
+}
+
+
+button {
+    background: radial-gradient(circle,rgb(25, 138, 25),rgb(8, 81, 8 ) );
+    box-shadow: 0 26px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    padding: 15px 32px;
+    margin: 10px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    color: white;
+}
+
+button:hover {
+    border: 2px solid white;
+    background: radial-gradient(circle,rgb(25, 138, 25),rgb(8, 81, 8 ));
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+.boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2,h3 {
+    color: rgb(8, 81, 8 );
+}
+
+@keyframes moveLeftToRight {
+    0% {
+        transform: translate(-200px, -50%) rotate(90deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100vw, -50%) rotate(90deg);
+        opacity: 1;
+    }
+}
+  
+@keyframes moveRightToLeft {
+    0% {
+        transform: translate(100vw, -50%) rotate(-90deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-200px, -50%) rotate(-90deg);
+        opacity: 1;
+    }
+}
+
+.ship-left-to-right, .ship-right-to-left {
+    position: absolute;
+    width: 40px;
+    height: 90px; 
+    transform: translateY(-50%); 
+    opacity: 0;
+}
+
+.ship-left-to-right {
+    top: 88%;
+    animation: moveLeftToRight 7s linear infinite; 
+    animation-name: moveLeftToRight; 
+}
+
+.ship-right-to-left {
+    top: 62%;
+    animation: moveRightToLeft 7s linear infinite;
+    animation-name: moveRightToLeft; 
+}
+
+.ship1 {
+    animation-delay: 0s;
+}
+
+.ship2 {
+    animation-delay: 1s;
+}
+
+.ship3 {
+    animation-delay: 2s;
+}
+
+.ship4 {
+    animation-delay: 4s;
+}
+
+.ship5 {
+    animation-delay: 5s;
+}
+
+nav {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+}
+
+.ul-indice {
+    position: relative;
+    z-index: 2; 
+}
+
+.barcos-instrucciones {
+    width: 40px;
+    height: 90px;
+    transform: rotateZ(-90deg);
+    display: inline-block;
+    margin-left: 30px; 
+    vertical-align: middle;
+}
+
+.barcos-texto {
+    margin-bottom: -50px; 
+}
+
+.hit-instrucciones, .miss-instrucciones {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-left: 10px; 
+    vertical-align: middle;
+}
+
+.miss-instrucciones {
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.hecho-por {
+    color: white;
+}
+
+.inicio-objetivo, .componentes-juego {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cuadro {
+    border-radius: 10px;
+    border: 2px solid white;   
+    padding: 20px;
+    margin: 10px;
+    width: 900px;
+    height: 150px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cuadro-componentes {
+    border-radius: 10px;
+    border: 2px solid white;
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 1455px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cuadro-instrucciones {
+    border-radius: 10px;
+    border: 2px solid white;   
+    padding: 20px;
+    margin: 10px;
+    width: 900px;
+    height: 110px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.cuadro p, .cuadro-instrucciones ul, .cuadro-componentes ul {
+    display: none;
+}
+
+.cuadro:hover p, .cuadro-instrucciones:hover ul, .cuadro-componentes:hover ul {
+    display: block;
+    text-align: justify;
+}
+
+.instrucciones-subtitulo {
+    text-align: center;
+}
+
+.componente-izquierda, .componente-derecha {
+    width: 48%;
+}
